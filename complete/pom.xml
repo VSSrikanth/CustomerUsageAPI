@@ -34,6 +34,13 @@
             <version>1.0</version>
         </dependency>-->
         <dependency>
+            <groupId>complete</groupId>
+            <artifactId>generatedClasses</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/generatedClasses-1.0.jar</systemPath>
+        </dependency>
+        <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
         </dependency>
@@ -46,6 +53,29 @@
     <build>
 
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <id>attach-artifacts</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>attach-artifact</goal>
+                        </goals>
+                        <configuration>
+                            <artifacts>
+                                <artifact>
+                                    <file>${basedir}/lib/generatedClasses-1.0.jar</file>
+                                    <type>jar</type>
+                                    <classifier>optional</classifier>
+                                </artifact>
+                            </artifacts>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -65,15 +95,12 @@
                             <artifactId>customer-usage-generated</artifactId>
                             <version>1.0</version>
                             <packaging>jar</packaging>
-                            <file>${basedir}/lib/generatedClasses.jar</file>
+                            <file>lib/generatedClasses-1.0.jar</file>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-            </plugin>
+
             <!--&lt;!&ndash; tag::wsdl[] &ndash;&gt;
             &lt;!&ndash;<plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
@@ -113,6 +140,7 @@
       </plugin>-->
             <!-- end::wsdl[] -->
         </plugins>
+
     </build>
 
     <!--<distributionManagement>
