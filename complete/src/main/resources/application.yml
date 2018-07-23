@@ -1,0 +1,10 @@
+logging:
+  level:
+    hello: INFO
+    org:
+      springframework:
+        ws: trace
+
+
+server:
+  port: 8888
