@@ -28,13 +28,11 @@
             <groupId>org.springframework.ws</groupId>
             <artifactId>spring-ws-core</artifactId>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>ca.vodacom</groupId>
-            <artifactId>customerusagejaxbgenrated</artifactId>
-            <version>2.6</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/generatedClasses.jar</systemPath>
-        </dependency>
+            <artifactId>customer-usage-generated</artifactId>
+            <version>1.0</version>
+        </dependency>-->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
@@ -46,10 +44,35 @@
     </dependencies>
 
     <build>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.5</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <groupId>ca.vodacom</groupId>
+                            <artifactId>customer-usage-generated</artifactId>
+                            <version>1.0</version>
+                            <packaging>jar</packaging>
+                            <file>${basedir}/lib/generatedClasses.jar</file>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
             </plugin>
             <!--&lt;!&ndash; tag::wsdl[] &ndash;&gt;
             &lt;!&ndash;<plugin>
@@ -98,5 +121,13 @@
             <url>file:c:/repository/</url>
         </repository>
     </distributionManagement>-->
+
+    <!--<repositories>
+        <repository>
+            <id>in-project</id>
+            <name>In Project Repo</name>
+            <url>file://${project.basedir}/lib</url>
+        </repository>
+    </repositories>-->
 
 </project>
