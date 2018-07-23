@@ -54,6 +54,35 @@
 
         <plugins>
             <plugin>
+            <groupId>org.jvnet.jax-ws-commons</groupId>
+            <artifactId>jaxws-maven-plugin</artifactId>
+            <version>2.3</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>wsimport</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+                <wsdlUrls>
+                    <wsdlUrl>
+                        http://c3d-osbmgr.vodacom.corp/services/CustomerServiceUsage/v1?wsdl
+                    </wsdlUrl>
+                </wsdlUrls>
+                <bindingDirectory>src/main/resources</bindingDirectory>
+                <bindingFiles>
+                    <bindingFile>sample.xjb</bindingFile>
+                </bindingFiles>
+                <sourceDestDir>${basedir}/src/main/java</sourceDestDir>
+                <xauthFile>C:\\Users\\Srikanth\\Documents\\auth.txt</xauthFile>
+                <vmArgs>
+                    <vmArg>-Djavax.xml.accessExternalDTD=all</vmArg>
+                    <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                </vmArgs>
+            </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
                 <version>1.7</version>
@@ -80,7 +109,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
                 <version>2.5</version>
@@ -99,7 +128,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
 
             <!--&lt;!&ndash; tag::wsdl[] &ndash;&gt;
             &lt;!&ndash;<plugin>
