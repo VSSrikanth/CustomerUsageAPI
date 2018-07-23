@@ -75,7 +75,7 @@
                     <bindingFile>sample.xjb</bindingFile>
                 </bindingFiles>
                 <sourceDestDir>${basedir}/src/main/java</sourceDestDir>
-                <xauthFile>C:\\Users\\Srikanth\\Documents\\auth.txt</xauthFile>
+                <xauthFile>${basedir}/src/main/resources/auth.txt</xauthFile>
                 <vmArgs>
                     <vmArg>-Djavax.xml.accessExternalDTD=all</vmArg>
                     <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>

@@ -1,0 +1,1 @@
+http://svc_ChatbotsTobi:Vodacom18@c3d-osbmgr.vodacom.corp/services/CustomerServiceUsage/v1?wsdl
